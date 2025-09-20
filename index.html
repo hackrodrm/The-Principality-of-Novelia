@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Principality of Novelia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="manifest" href="/manifest.json">
+    <style>
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      body {
+        background-color: #f5f5dc;
+        background-image:
+          linear-gradient(rgba(211, 200, 178, 0.5) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(211, 200, 178, 0.5) 1px, transparent 1px);
+        background-size: 20px 20px;
+        color: #f5f5dc; /* Default text color is parchment */
+      }
+      
+      .admin-bg {
+        background-image:
+          linear-gradient(rgba(192, 192, 192, 0.2) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(192, 192, 192, 0.2) 1px, transparent 1px);
+      }
+
+      .content-fade-in {
+        animation: fadeIn 0.5s ease-in-out;
+      }
+
+      .card {
+        background-color: rgba(26, 26, 26, 0.85);
+        backdrop-filter: blur(5px);
+        border: 1px solid;
+        border-image-slice: 1;
+        border-image-source: linear-gradient(to right, #4b0082, #FFD700);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+      }
+      
+      .admin-card {
+        background-color: rgba(26, 26, 26, 0.85);
+        backdrop-filter: blur(5px);
+        border: 1px solid;
+        border-image-slice: 1;
+        border-image-source: linear-gradient(to right, #444, #C0C0C0);
+      }
+
+      .custom-btn {
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+      
+      .custom-btn-gold {
+        background: linear-gradient(145deg, #FFD700, #f0c000);
+        color: #1a1a1a;
+        border: 1px solid #FFD700;
+      }
+      .custom-btn-gold:hover {
+        background: linear-gradient(145deg, #ffdf33, #ffd700);
+        box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+      }
+      
+      .custom-btn-violet {
+         background: linear-gradient(145deg, #5c00a3, #4b0082);
+         color: #FFD700;
+         border: 1px solid #4b0082;
+      }
+      .custom-btn-violet:hover {
+         background: linear-gradient(145deg, #6a00bf, #5c00a3);
+      }
+      
+      .custom-input {
+        background-color: rgba(0,0,0,0.3);
+        border: 1px solid #4b0082;
+        transition: all 0.3s ease;
+      }
+      .custom-input:focus {
+        outline: none;
+        border-color: #FFD700;
+        box-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+      }
+
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-dark': '#1a1a1a',
+                        'brand-violet': '#4b0082',
+                        'brand-gold': '#FFD700',
+                        'brand-silver': '#C0C0C0',
+                        'brand-parchment': '#f5f5dc'
+                    },
+                    fontFamily: {
+                        display: ['"Cinzel Decorative"', 'serif'],
+                        body: ['"Cormorant Garamond"', 'serif'],
+                    },
+                    borderColor: theme => ({
+                        ...theme('colors'),
+                        DEFAULT: theme('colors.gray.200', 'currentColor'),
+                        'brand-gold': '#FFD700',
+                    }),
+                    boxShadow: {
+                        'gold-glow': '0 0 20px rgba(255, 215, 0, 0.6)',
+                        'silver-glow': '0 0 20px rgba(192, 192, 192, 0.6)',
+                    }
+                }
+            }
+        }
+    </script>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.1.1/",
+    "react": "https://aistudiocdn.com/react@^19.1.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/"
+  }
+}
+</script>
+</head>
+<body class="font-body">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+          window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/sw.js').then(registration => {
+              console.log('Service Worker registered: ', registration);
+            }).catch(registrationError => {
+              console.log('Service Worker registration failed: ', registrationError);
+            });
+          });
+        }
+    </script>
+</body>
+</html>
